@@ -1,7 +1,6 @@
 #!/bin/python2
 # python2 script
-# Extract acoustic features for all audio files of the AVEC 2018 Cross-cultural Emotion Sub-Challenge (CES)
-# Put the scripts into a subfolder of the AVEC2018_CES package, e.g., AVEC2018_CES/scripts/
+# Extract acoustic LLDs (MFCC and eGeMAPS sets from openSMILE)
 # Output: csv files
 
 import os
@@ -39,4 +38,3 @@ for fn in os.listdir(folder_data):
     time.sleep(0.01)
 
 os.remove('smile.log')
-

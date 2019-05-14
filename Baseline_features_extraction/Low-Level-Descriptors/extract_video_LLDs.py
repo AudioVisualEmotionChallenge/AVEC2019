@@ -1,7 +1,6 @@
 #!/bin/python2
 # python2 script
-# Extract visual features (FAU likelihoods) for all video files of the AVEC 2018 Cross-cultural Emotion Sub-Challenge (CES)
-# Put the scripts into a subfolder of the AVEC2018_CES package, e.g., AVEC2018_CES/scripts/
+# Extract visual LLDs (FAU likelihoods) for video files of AVEC 2019
 # Output: csv files
 
 import os
@@ -38,4 +37,3 @@ for fn in os.listdir(folder_data):
     
     # Remove details file
     os.remove(folder_output + instname + '_of_details.txt')
-
