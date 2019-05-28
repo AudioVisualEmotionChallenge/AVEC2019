@@ -1,17 +1,18 @@
 # Baseline features extraction scripts
 
-## Supervised representations
+## Low-level-descriptors (LLDs)
 
-* extract\_audio\_features.py: Extract acoustic features (using openSMILE: http://audeering.com/technology/opensmile/) over time (either eGeMAPS LLDs or MFCCs + delta + acceleration) for all audio files in the folder 'audio/'. Features are stored in the folder 'audio_features/'. The feature script to be extracted needs to be configured in line 11.
+* extract\_audio\_features.py: Extract acoustic LLDs over time (either eGeMAPS LLDs or MFCCs + delta + acceleration) using openSMILE: http://audeering.com/technology/opensmile/). All audio files in the folder 'audio/' are processed and LLDs are stored in the folder 'audio_features/'.
 
-* extract\_video\_features.py: Extract visual features (FAU likelihoods, using openFace: https://github.com/TadasBaltrusaitis/OpenFace/) for all video files in the folder 'video/'. Features are stored in the folder 'visual_features/'.
+* extract\_video\_features.py: Extract visual LLDs over time (FAU likelihoods) using openFace: https://github.com/TadasBaltrusaitis/OpenFace/). All video files in the folder 'video/' are processed and LLDs are stored in the folder 'visual_features/'.
 
-## Semi-supervised representations
+## Bag-of-Words representations
 
-* generate\_xbow.py: Extract bag-of-audio-words (BoAW) and bag-of-video-words (BoVW) features (using openXBOW: https://github.com/openXBOW/openXBOW) from the respective low-level descriptors configured in lines 13 and 14. This script uses the tool openXBOW (see below). This script is not required if you have downloaded the features in the folders audio\_features\_xbow/ and visual\_features\_xbow/.
-
+* generate\_xbow.py: Extract bag-of-audio-words (BoAW) and bag-of-video-words (BoVW) features from the respective LLDs using openXBOW: https://github.com/openXBOW/openXBOW. 
 * openXBOW.jar: The openXBOW (Passau Open-Source Crossmodal Bag-of-Words) Toolkit, latest version 1.0.
 
-## Unsupervised representations
+## Deep learning representations (CNNs)
 
-Deep Spectrum representation of audio signal can be generated using the DeepSpectrum toolkit: https://github.com/DeepSpectrum/DeepSpectrum. For exact replication of the features, please use the configuration given in: https://github.com/DeepSpectrum/DeepSpectrum#features-for-avec2018-ces.
+* Audio/DL\_Audio\_AVEC19.sh: Extract VGG-16 and densenet201 CNNs based audio representations from audio files using 
+Deep Spectrum: https://github.com/DeepSpectrum/DeepSpectrum. 
+* Video/demo.py: Extract RestNet and VGG-16 VNNs based video representations.
