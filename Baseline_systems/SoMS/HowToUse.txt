@@ -1,0 +1,39 @@
++ step 0:
+    (tested with conda on linux-fedora29 on cuda9 and mac)
+    - install pytorch=1.1.0
+    - install pandas=0.24.2
+
++ step1:
+    (If running for SoM, no need to run this step since the preprocess has been done and put into "data" folder.)
+    go to preprocess.py and change the filesPath there to the path in your machine where the csv files of the dataset exist. Then run preprocess.py by: 
+    $ python preprocess.py
+    And then go to DatasetLoader.py and change "self.filesPath" to where your dataset exists. or change it so that it would load another dataset!
+
++ step2:
+    go to train.py and change "datasetLoader.dataset = " line to the feature that you want to train for. and then after changing other options you can run:
+    $ python train.py
+    Note that for training a different set of features, you have to change the "DatasetLoader.py" file.
+    - The "tars: tars[:,0] - tars[:,1]" defines how we use the targets to train the model, for example, "tars[:,0] - tars[:,1]" for "colomnsSeeked = ["Valance", "Valence_0"]" 
+    means that we train for "Valance - Valence_0"
+    - computeLossFor works as batch_size here! I did not put the name batch_size since it is not what conventionally how batch_size is implemented but it does 
+    compute the loss by breaking the whole dataset into smaller_batches as a batch_size would do! No need to change computeLossForEval even for big data sizes, since 
+    we don't need backward connections for evaluating, only the results would get saved and concatenated to compute the loss so that the memory is preserved as much as possible.
+
++ step3:
+    test the trained model by:
+    $ python test.py
+    This file loads the model from "savePath" parameter. So you have to have the same name as your trained model and also the same featur types.
+    - the "plusTar" if not -1, adds a target to the output when computing loss, for example, plusTar=1 for "tars: tars[:,0] - tars[:,1]" on "colomnsSeeked = ["Valance", "Valence_0"]" 
+    means that when we trained for "Valance - Valence_0", we are computing loss for "Valance - Valence_0 + Valence_0" so that we have just "Valance". the "plusTar" if put to -1,
+    has no effect and the loss would get compute for "Valance - Valence_0".
+    - Note that the results would get saved to "results.csv" in "models" folder by default, but there is the option of changing it in the code.
+
++ fusion step:
+    for fusion, there is the file called "runFusion.py". There is a template for adding datasets which you can use by just copy and pasting and changing the parameters.
+    Also, the corresponding model for the added dataset must be added by its name of saved path and then add it to "models" list. (again, the first one can be used as an example)
+    - the fused features are saved as "trainData.csv", "devData.csv" and "testData.csv" as default in the code and are stored in the corresponding folder in "models" (can be changed), 
+
++ possible errors: 
+    - not finding paths or files: In this case just change the path of that specific folder or file to where it is supposed to be or change the code for that case from "DatasetLoader.py" file.
+    - I have made some files from excel format to csv, so if the error is not finding a csv file, it may be the case.
+    - In preprocess file, you might have to change the "metaCSVCol='Participant" to something else if in that csv file a colomn with that header does not exists. Or change the CSV file!

@@ -1,0 +1,10 @@
+Description of each file in this folder:
+- HowToUse.txt: how to train and test the models on the dataset
+- DeepModels.py: the pytorch models of the neural networks
+- funcs.py: some useful functions that are used in different other files
+- ModelWrappers.py: is a wrapper for pytorch deep learning models that trains and tests a neural network defined by the DeepModels.py file.
+- preprocess.py: the preprocess file that must be run so that we have the data needed for training a neural net.
+- run.py: the high end run file that is being used to train and get the results.
+- speechDataset.py: a class that handles reading saved data to be used in a pytorch neural network.
+- DatasetLoader.py: a class on top of speechDataset that makes loading datasets more specific and also simpler.
+- data_loader.py: a class to load the fused features from csv files.
