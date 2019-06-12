@@ -1,4 +1,4 @@
-# Baseline scripts for the Cross-cultural Emotion Sub-Challenge (CES)
+## Baseline scripts for the Cross-cultural Emotion Sub-Challenge (CES)
 
 * baseline\_lstm.py: Perform training of a 2-layer LSTM on the features and save monomodal predictions.
 
