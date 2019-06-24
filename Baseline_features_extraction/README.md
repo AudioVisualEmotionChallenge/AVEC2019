@@ -6,6 +6,8 @@
 
 * extract\_video\_features.py: Extract visual LLDs over time (FAU likelihoods) using openFace: https://github.com/TadasBaltrusaitis/OpenFace/). All video files in the folder 'video/' are processed and LLDs are stored in the folder 'visual_features/'.
 
+* generate\_functionals.py: Compute statistics (mean and standard deviation) of the LLDs using a sliding window.
+
 ## Bag-of-Words representations
 
 * generate\_xbow.py: Extract bag-of-audio-words (BoAW) and bag-of-video-words (BoVW) features from the respective LLDs using openXBOW: https://github.com/openXBOW/openXBOW. 
