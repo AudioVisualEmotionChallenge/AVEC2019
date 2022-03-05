@@ -118,17 +118,17 @@ def preprocess6(path, feature_set, split_path, out_path):
 
     for i in range(1, len(train)+1):
         fname = 'training_' + str(i).zfill(3) + "_" + feature_set
-        file_np = pd.read_csv(os.path.join(path, fname), header=None, sep=';').iloc[:,2:].values
+        file_np = pd.read_csv(os.path.join(path, fname), header=0, sep=',').iloc[:,2:].values
         file_np = smooth_subsample_frames(file_np)
         np.save(os.path.join(out_path, str(train[i-1]))+'.npy', file_np)
     for i in range(1, len(dev)+1):
         fname = 'development_' + str(i).zfill(2) + "_" + feature_set
-        file_np = pd.read_csv(os.path.join(path, fname), header=None, sep=';').iloc[:,2:].values
+        file_np = pd.read_csv(os.path.join(path, fname), header=0, sep=',').iloc[:,2:].values
         file_np = smooth_subsample_frames(file_np)
         np.save(os.path.join(out_path, str(dev[i-1]))+'.npy', file_np)
     for i in range(1, len(dev)+1):
         fname = 'test_' + str(i).zfill(2) + "_" + feature_set
-        file_np = pd.read_csv(os.path.join(path, fname), header=None, sep=';').iloc[:,2:].values
+        file_np = pd.read_csv(os.path.join(path, fname), header=0, sep=',').iloc[:,2:].values
         file_np = smooth_subsample_frames(file_np)
         np.save(os.path.join(out_path, str(test[i-1]))+'.npy', file_np)
 
